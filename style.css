@@ -13,6 +13,13 @@
   --backdrop-color: rgba(0, 0, 0, 0.4);
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 button {
   border: none;
   background-color: transparent;
@@ -26,6 +33,15 @@ img {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+
+.content-limitter {
+  width: 100%;
+}
+@media (min-width: 2300px) and (min-height: 1400px) {
+  .content-limitter {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 17px 2px;
+  }
 }
 
 .first-grid-container {
@@ -42,10 +58,12 @@ img {
   display: flex;
   align-items: center;
   padding: 30px;
+  width: 100%;
   position: absolute;
   top: 0px;
   left: 0px;
   z-index: 2;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6), transparent);
 }
 .page-main-header a {
   margin-left: 30px;
@@ -90,10 +108,6 @@ img {
 }
 
 .carousel-container {
-  height: 100%;
-}
-.carousel-container picture {
-  width: 100%;
   height: 100%;
 }
 .carousel-container img {
@@ -205,9 +219,42 @@ img {
     cursor: default;
   }
 }
+@media (min-width: 2300px) {
+  .content-limitter {
+    max-width: 2200px;
+  }
+}
+@media (min-height: 1400px) {
+  .first-grid-container {
+    grid-template-rows: 855px;
+  }
+
+  .second-grid-container {
+    grid-template-rows: 455px;
+  }
+}
+@media (min-width: 1900px) {
+  .page-main-header a {
+    font-size: 17px;
+  }
+
+  .discover-section h1 {
+    font-size: 40px;
+  }
+  .discover-section p {
+    font-size: 17px;
+  }
+
+  .about-section h2 {
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+  .about-section p {
+    font-size: 17px;
+  }
+}
 @media (max-height: 580px), (max-width: 880px) {
-  body {
-    margin: 0px auto;
+  .content-limitter {
     padding-bottom: 20px;
     max-width: 600px;
   }
@@ -248,7 +295,6 @@ img {
 
   .page-main-header {
     justify-content: center;
-    width: 100%;
   }
 
   .page-main-header > nav {
