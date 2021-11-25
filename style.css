@@ -8,14 +8,24 @@
 :root {
   --black-color: black;
   --white-color: white;
-  --gray-color: rgb(90, 88, 88);
+  --gray-color: rgb(104, 102, 102);
   --gray-color-active: rgba(73, 72, 72);
+  --backdrop-color: rgba(0, 0, 0, 0.4);
 }
 
 button {
   border: none;
-  background-color: var(--white-color);
+  background-color: transparent;
   cursor: pointer;
+}
+
+img {
+  display: block;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .first-grid-container {
@@ -38,11 +48,16 @@ button {
   z-index: 2;
 }
 .page-main-header a {
+  margin-left: 30px;
   padding: 8px;
   position: relative;
   color: var(--white-color);
   font-size: 14px;
   text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 .page-main-header a::after {
   content: "";
@@ -54,16 +69,31 @@ button {
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--white-color);
-  transition: width 150ms ease-out;
+  transition: width 200ms ease-out;
 }
-.page-main-header a:hover::after {
-  width: 40%;
+.page-main-header a:active::after {
+  width: 60%;
 }
-.page-main-header > * + * {
-  margin-left: 30px;
+@media (hover: hover) {
+  .page-main-header a:hover::after {
+    width: 40%;
+  }
+}
+
+.hamburguer-button {
+  display: none;
+  background-color: transparent;
+}
+
+.hamburguer-menu-closer {
+  display: none;
 }
 
 .carousel-container {
+  height: 100%;
+}
+.carousel-container picture {
+  width: 100%;
   height: 100%;
 }
 .carousel-container img {
@@ -73,40 +103,14 @@ button {
   top: 0px;
   left: 0px;
   opacity: 0;
-  object-fit: cover;
-  transition: opacity 150ms ease;
-}
-
-.discover-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  position: relative;
-}
-.discover-section h1 {
-  font-size: 35px;
-}
-.discover-section p {
-  margin: 24px 0px;
-  color: var(--gray-color);
-  font-size: 12px;
-}
-.discover-section > div {
-  max-width: 450px;
-}
-.discover-section > div > button {
-  text-transform: uppercase;
-}
-.discover-section > div > button svg {
-  margin-left: 14px;
+  transition: opacity 200ms ease-out;
 }
 
 .controls {
   display: flex;
   position: absolute;
   bottom: 0px;
-  left: 0px;
+  right: 0px;
 }
 .controls button {
   padding: 16px 24px;
@@ -118,6 +122,51 @@ button {
 }
 .controls button:first-child svg {
   transform: rotate(180deg);
+}
+@media (min-height: 700px) and (min-width: 881px) {
+  .controls {
+    transform: translateX(100%);
+  }
+}
+
+.discover-section {
+  justify-self: center;
+  align-self: center;
+  padding: 30px;
+  max-width: 450px;
+}
+.discover-section h1 {
+  font-size: 35px;
+}
+.discover-section p {
+  margin: 24px 0px;
+  color: var(--gray-color);
+  font-size: 13px;
+}
+
+.shop-now-button {
+  padding: 10px;
+  color: var(--black-color);
+  text-transform: uppercase;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  transition: color 150ms ease;
+}
+.shop-now-button svg {
+  margin-left: 14px;
+  fill: currentColor;
+  transition: color 150ms ease;
+}
+.shop-now-button:active {
+  color: var(--gray-color);
+}
+@media (hover: hover) {
+  .shop-now-button:hover {
+    color: var(--gray-color);
+  }
 }
 
 .second-grid-container {
@@ -144,17 +193,150 @@ button {
 }
 .about-section p {
   color: var(--gray-color);
-  font-size: 12px;
+  font-size: 13px;
 }
 
-.show-image--js.show-image--js {
-  opacity: 1;
+.backdrop-area {
+  display: none;
 }
 
 @media (pointer: coarse) {
   button, * {
     cursor: default;
   }
+}
+@media (max-height: 580px), (max-width: 880px) {
+  body {
+    margin: 0px auto;
+    padding-bottom: 20px;
+    max-width: 600px;
+  }
+
+  .first-grid-container, .second-grid-container {
+    display: block;
+  }
+
+  .page-main-header {
+    padding: 24px 30px;
+  }
+
+  .carousel-container img {
+    width: 100%;
+    height: auto;
+  }
+
+  .second-grid-container img {
+    margin: 0px auto;
+    max-width: 300px;
+  }
+
+  .discover-section, .about-section {
+    max-width: none;
+    padding: 40px 16px;
+  }
+}
+@media (max-width: 550px) {
+  .hamburguer-button {
+    display: block;
+    position: absolute;
+    left: 24px;
+  }
+
+  .hamburguer-menu-closer {
+    display: block;
+  }
+
+  .page-main-header {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .page-main-header > nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 23px 20px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    transform: translateY(-102%);
+    background-color: var(--white-color);
+    transition: transform 150ms ease-out;
+  }
+  .page-main-header > nav a {
+    margin: 0px;
+    color: var(--black-color);
+    font-size: 16px;
+  }
+  .page-main-header > nav a::after {
+    background-color: var(--black-color);
+  }
+
+  .discover-section h1 {
+    font-size: 30px;
+  }
+  .discover-section p {
+    margin: 18px 0px;
+    font-size: 15px;
+  }
+
+  .shop-now-button {
+    font-size: 16px;
+  }
+
+  .about-section h2 {
+    margin-bottom: 18px;
+    font-size: 18px;
+  }
+  .about-section p {
+    font-size: 15px;
+  }
+
+  .backdrop-area {
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: var(--backdrop-color);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms linear;
+  }
+}
+@media (max-width: 380px) {
+  .hamburguer-menu-closer {
+    align-self: flex-start;
+  }
+
+  .page-main-header > nav {
+    align-items: center;
+    flex-direction: column;
+  }
+  .page-main-header > nav div {
+    max-width: 200px;
+  }
+  .page-main-header > nav a {
+    display: block;
+    text-align: center;
+  }
+  .page-main-header > nav a + a {
+    margin-top: 6px;
+  }
+}
+.show-hamburguer-menu--js.show-hamburguer-menu--js {
+  transform: translateY(0%);
+}
+
+.show-image--js.show-image--js img {
+  opacity: 1;
+  position: static;
+}
+
+.show-backdrop-area--js {
+  opacity: 1;
+  pointer-events: all;
 }
 
 /*# sourceMappingURL=style.css.map */
