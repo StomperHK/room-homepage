@@ -26,6 +26,12 @@ button {
   cursor: pointer;
 }
 
+@media (pointer: coarse) {
+  button, a {
+    outline: none;
+  }
+}
+
 img {
   display: block;
   object-fit: cover;
@@ -224,6 +230,16 @@ img {
     max-width: 2200px;
   }
 }
+@media (min-width: 2300px) and (min-height: 1400px) {
+  .content-limitter {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 17px 2px;
+  }
+}
+@media (min-width: 2030px) {
+  .discover-section, .about-section {
+    max-width: 600px;
+  }
+}
 @media (min-height: 1400px) {
   .first-grid-container {
     grid-template-rows: 855px;
@@ -231,26 +247,6 @@ img {
 
   .second-grid-container {
     grid-template-rows: 455px;
-  }
-}
-@media (min-width: 1900px) {
-  .page-main-header a {
-    font-size: 17px;
-  }
-
-  .discover-section h1 {
-    font-size: 40px;
-  }
-  .discover-section p {
-    font-size: 17px;
-  }
-
-  .about-section h2 {
-    margin-bottom: 16px;
-    font-size: 18px;
-  }
-  .about-section p {
-    font-size: 17px;
   }
 }
 @media (max-height: 580px), (max-width: 880px) {
@@ -291,6 +287,10 @@ img {
 
   .hamburguer-menu-closer {
     display: block;
+    transition: transform 150ms linear;
+  }
+  .hamburguer-menu-closer:active {
+    transform: scale(0.8);
   }
 
   .page-main-header {
