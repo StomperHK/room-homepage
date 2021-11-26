@@ -307,7 +307,7 @@ img {
     left: 0px;
     transform: translateY(-102%);
     background-color: var(--white-color);
-    transition: transform 150ms ease-out;
+    transition: transform 200ms ease-out;
   }
   .page-main-header > nav a {
     margin: 0px;
