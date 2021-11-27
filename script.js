@@ -4,10 +4,9 @@ const hamburguerMenuEL = document.querySelector('[data-js="hamburguer-menu"]')
 const backdropAreaEL = document.querySelector('[data-js="backdrop-area"]')
 
 const carouselImagesELs = Array.from(document.querySelector('[data-js="carousel-container"]').children)
+const contentSectionsELs = Array.from(document.querySelector('main').children)
 const previousImageEL = document.querySelector('[data-js="previous-image"]')
 const nextImageEL = document.querySelector('[data-js="next-image"]')
-
-let carouselMoveInterval = null
 
 
 function toggleShowHamburgerMenu() {
@@ -23,7 +22,7 @@ function toggleShowHamburgerMenu() {
   }
 }
 
-function getVisibleImageIndex() {
+function getVisibleSectionIndex() {
   for (let index=0; index < carouselImagesELs.length; index++) {
     const currentImage = carouselImagesELs[index]
     const theCurrentImageIsVisible = currentImage.classList.contains('show-image--js')
@@ -32,55 +31,44 @@ function getVisibleImageIndex() {
   }
 }
 
-function removeVisibilityClass(imageIndex) {
-  carouselImagesELs[imageIndex].classList.remove('show-image--js')
+function removeVisibilityClasses(sectionIndex) {
+  carouselImagesELs[sectionIndex].classList.remove('show-image--js')
+  contentSectionsELs[sectionIndex].classList.remove('show-text--js')
 }
 
-function addVisibilityClass(imageIndex) {
-  carouselImagesELs[imageIndex].classList.add('show-image--js')
-}
-
-function scheduleCarouselAutoMovement() {
-  carouselMoveInterval = setInterval(next, 4000)
+function addVisibilityClasses(sectionIndex) {
+  carouselImagesELs[sectionIndex].classList.add('show-image--js')
+  contentSectionsELs[sectionIndex].classList.add('show-text--js')
 }
 
 function prev() {
-  clearInterval(carouselMoveInterval)
 
-  const visibleImageIndex = getVisibleImageIndex()
+  const visibleSectionIndex = getVisibleSectionIndex()
   const carouselImagesLength = carouselImagesELs.length
 
-  removeVisibilityClass(visibleImageIndex)
+  removeVisibilityClasses(visibleSectionIndex)
 
-  if (visibleImageIndex) {
-    addVisibilityClass(visibleImageIndex-1)
+  if (visibleSectionIndex) {
+    addVisibilityClasses(visibleSectionIndex-1)
   }
   else {
-    addVisibilityClass(carouselImagesLength-1)
+    addVisibilityClasses(carouselImagesLength-1)
   }
-
-  scheduleCarouselAutoMovement()
 }
 
 function next() {
-  clearInterval(carouselMoveInterval)
-
-  const visibleImageIndex = getVisibleImageIndex()
+  const visibleSectionIndex = getVisibleSectionIndex()
   const carouselImagesLength = carouselImagesELs.length
 
-  removeVisibilityClass(visibleImageIndex)
+  removeVisibilityClasses(visibleSectionIndex)
 
-  if (visibleImageIndex < carouselImagesLength-1) {
-    addVisibilityClass(visibleImageIndex+1)
+  if (visibleSectionIndex < carouselImagesLength-1) {
+    addVisibilityClasses(visibleSectionIndex+1)
   }
   else {
-    addVisibilityClass(0)
+    addVisibilityClasses(0)
   }
-
-  scheduleCarouselAutoMovement()
 }
-
-scheduleCarouselAutoMovement()
 
 
 hamburguerMenuCloserEL.addEventListener('click', toggleShowHamburgerMenu)
