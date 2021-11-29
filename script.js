@@ -75,6 +75,8 @@ hamburguerMenuCloserEL.addEventListener('click', toggleShowHamburgerMenu)
 
 hamburguerButtonEL.addEventListener('click', toggleShowHamburgerMenu)
 
+backdropAreaEL.addEventListener('click', toggleShowHamburgerMenu)
+
 previousImageEL.addEventListener('click', prev)
 
 nextImageEL.addEventListener('click', next)
