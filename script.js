@@ -42,7 +42,6 @@ function addVisibilityClasses(sectionIndex) {
 }
 
 function prev() {
-
   const visibleSectionIndex = getVisibleSectionIndex()
   const carouselImagesLength = carouselImagesELs.length
 
