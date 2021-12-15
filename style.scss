@@ -185,13 +185,9 @@ main {
   max-width: 450px;
 
   section {
-    height: 0px;
-
-    overflow: hidden;
-
-    opacity: 0;
+    display: none;
     
-    transition: opacity 550ms ease-out;
+    opacity: 0;
   }
 
   h1, h2 {
@@ -457,6 +453,16 @@ main {
 }
 
 
+@keyframes increase-text-opacity {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
 .show-hamburguer-menu--js.show-hamburguer-menu--js {
   transform: translateY(0%);
 }
@@ -467,9 +473,9 @@ main {
 }
 
 .show-text--js {
-  height: auto;
+  display: block;
 
-  opacity: 1;
+  animation: increase-text-opacity 350ms ease-out forwards;
 }
 
 .show-backdrop-area--js {
