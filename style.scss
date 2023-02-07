@@ -118,8 +118,10 @@ img {
     transition: width 200ms ease-out;
   }
 
-  a:active::after {
-    width: 60%;
+  @media (hover: none) {
+    a:active::after {
+      width: 60%;
+    }
   }
 
   @media (hover: hover) {
@@ -181,14 +183,14 @@ img {
   }
 }
 
-main {
+.carousel-text {
   justify-self: center;
   align-self: center;
 
   padding: 30px;
   max-width: 450px;
 
-  section > section {
+  section {
     display: none;
     
     opacity: 0;
@@ -295,7 +297,7 @@ main {
 }
 
 @media (min-width: 2030px) {
-  main, .about-section {
+  .carousel-text, .about-section {
     max-width: 600px;
   }
 }
@@ -334,7 +336,7 @@ main {
     max-width: 300px;
   }
 
-  main, .about-section {
+  .carousel-text, .about-section {
     max-width: none;
     padding: 40px 16px;
   }
@@ -480,7 +482,7 @@ main {
   position: static;
 }
 
-.show-text--js {
+.show-text--js.show-text--js {
   display: block;
 
   animation: increase-text-opacity 350ms ease-out forwards;

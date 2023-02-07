@@ -102,8 +102,10 @@ img {
   background-color: var(--white-color);
   transition: width 200ms ease-out;
 }
-.page-main-header a:active::after {
-  width: 60%;
+@media (hover: none) {
+  .page-main-header a:active::after {
+    width: 60%;
+  }
 }
 @media (hover: hover) {
   .page-main-header a:hover::after {
@@ -155,20 +157,20 @@ img {
   }
 }
 
-main {
+.carousel-text {
   justify-self: center;
   align-self: center;
   padding: 30px;
   max-width: 450px;
 }
-main section > section {
+.carousel-text section {
   display: none;
   opacity: 0;
 }
-main h1, main h2 {
+.carousel-text h1, .carousel-text h2 {
   font-size: 35px;
 }
-main p {
+.carousel-text p {
   margin: 4vh 0px;
   color: var(--gray-color);
   font-size: 15px;
@@ -246,7 +248,7 @@ main p {
   }
 }
 @media (min-width: 2030px) {
-  main, .about-section {
+  .carousel-text, .about-section {
     max-width: 600px;
   }
 }
@@ -277,7 +279,7 @@ main p {
     margin: 0px auto;
     max-width: 300px;
   }
-  main, .about-section {
+  .carousel-text, .about-section {
     max-width: none;
     padding: 40px 16px;
   }
@@ -385,7 +387,7 @@ main p {
   position: static;
 }
 
-.show-text--js {
+.show-text--js.show-text--js {
   display: block;
   animation: increase-text-opacity 350ms ease-out forwards;
 }
