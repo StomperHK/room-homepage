@@ -4,7 +4,7 @@ const hamburguerMenuEL = document.querySelector('[data-js="hamburguer-menu"]')
 const backdropAreaEL = document.querySelector('[data-js="backdrop-area"]')
 
 const carouselImagesELs = Array.from(document.querySelector('[data-js="carousel-container"]').children)
-const contentSectionsELs = Array.from(document.querySelector('main > section').children)
+const contentSectionsELs = Array.from(document.querySelector('.carousel-text').children)
 const previousImageEL = document.querySelector('[data-js="previous-image"]')
 const nextImageEL = document.querySelector('[data-js="next-image"]')
 
